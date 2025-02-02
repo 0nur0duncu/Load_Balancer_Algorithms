@@ -6,6 +6,12 @@ class LoadBalancer {
     private int currentIndex;
 
     public LoadBalancer(List<String> servers) {
+        if (servers == null) {
+            throw new NullPointerException("Server list cannot be null");
+        }
+        if (servers.isEmpty()) {
+            throw new IllegalArgumentException("Server list cannot be empty");
+        }
         this.servers = new ArrayList<>(servers);
         this.currentIndex = 0;
     }
